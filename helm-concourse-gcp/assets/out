@@ -291,8 +291,6 @@ elif [ "$test" = true ]; then
 else
   echo "Installing $release"
   helm_upgrade
-  helm history $tls_flag --max 1 $release
-  echo "Finished installing $release"
 
   if [ "$release" = "" ]; then
     release=$(helm ls -qrd --max 1 | head -1)

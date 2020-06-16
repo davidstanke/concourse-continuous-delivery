@@ -13,13 +13,13 @@ ENV GCLOUD_SDK_URL=https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/go
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/google-cloud-sdk/bin
 
 WORKDIR /
-RUN apk add --update --no-cache ca-certificates git python jq bash curl tar gzip gettext
-RUN curl -sSL -o /usr/local/bin/kubectl "${KUBECTL_URL}" \
-  && chmod +x /usr/local/bin/kubectl
-RUN mkdir -p /opt \
+RUN apk add --update --no-cache ca-certificates git python jq bash curl tar gzip \
+  && curl -sSL -o /usr/local/bin/kubectl "${KUBECTL_URL}" \
+  && chmod +x /usr/local/bin/kubectl \
+  && mkdir -p /opt \
   && curl -sSL "${GCLOUD_SDK_URL}" | tar zx -C /opt \
-  && /opt/google-cloud-sdk/install.sh -q
-RUN curl -sSL "${HELM_URL}" | tar zx -C /tmp \
+  && /opt/google-cloud-sdk/install.sh -q \
+  && curl -sSL "${HELM_URL}" | tar zx -C /tmp \
   && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
   && helm plugin install https://github.com/viglesiasce/helm-gcs.git >/dev/null 2>&1
 
