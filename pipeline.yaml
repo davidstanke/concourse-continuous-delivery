@@ -81,7 +81,7 @@ jobs:
         chart_name: {{chart_name}}
     - put: {{release_name}}
       params:
-        chart: gcs-repo/{{chart_name}}
+        chart: helm-repo/nginx-v1.0.0.tgz
         override_values:
         - key: image.repository
           path: app-image/repository

@@ -1,2 +1,6 @@
 secrets.yaml
 concourse-sa.json
+concourse.yaml
+fly
+helm
+params.yaml
