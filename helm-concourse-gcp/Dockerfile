@@ -3,8 +3,8 @@
 FROM alpine:3.8
 
 ENV HELM_VERSION=3.2.0
-ENV KUBECTL_VERSION=1.15.11
-ENV GCLOUD_SDK_VERSION=295.0.0
+ENV KUBECTL_VERSION=1.11.6
+ENV GCLOUD_SDK_VERSION=177.0.0
 
 ENV HELM_URL=https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
 ENV KUBECTL_URL=https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
