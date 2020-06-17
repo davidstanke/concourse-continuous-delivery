@@ -5,8 +5,8 @@ resource_types:
 - name: helm
   type: docker-image
   source:
-    repository: gcr.io/cloud-solutions-images/concourse-helm-gcp
-    tag: v0.2.2
+    repository: gcr.io/stanke-concourse-4/concourse-helm-gcp
+    tag: v0.3.0
 
 - name: git-gcp
   type: docker-image
@@ -81,7 +81,8 @@ jobs:
         chart_name: {{chart_name}}
     - put: {{release_name}}
       params:
-        chart: gcs-repo/{{chart_name}}
+        chart: gcs-repo/((chart_name))
+        version: v*
         override_values:
         - key: image.repository
           path: app-image/repository
