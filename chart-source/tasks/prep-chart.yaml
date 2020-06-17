@@ -27,6 +27,7 @@ run:
       exit 1
     fi
     mkdir -p helm-repo
+    helm init --client-only
     VERSION=$(cd chart-source && git tag -l --points-at HEAD | tail -n1)
     cp -a chart-source $chart_name
     helm package $chart_name -d helm-repo --version $VERSION
