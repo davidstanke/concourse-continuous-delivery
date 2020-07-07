@@ -4,7 +4,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: gcr.io/stanke-concourse-4/concourse-helm-gcp
+    repository: gcr.io/stanke-concourse-6/concourse-helm-gcp
     tag: v0.3.0
 
 inputs:
@@ -27,7 +27,6 @@ run:
       exit 1
     fi
     mkdir -p helm-repo
-    helm init --client-only
     VERSION=$(cd chart-source && git tag -l --points-at HEAD | tail -n1)
     cp -a chart-source $chart_name
     helm package $chart_name -d helm-repo --version $VERSION
